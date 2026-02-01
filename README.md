@@ -28,7 +28,7 @@ To view the website locally:
 
 Clone this repository:
 
-git clone https://github.com/shanmukharani/BookNest.git
+git clone https://github.com/Rupa1806/BookNest.git
 
 
 Open the folder in your code editor.
