@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookNest | Hotel Details</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1 id="hotelName">Hotel Name</h1>
+</header>
+
+<section class="hotel-details">
+    <div class="hotel-info">
+
+        <p id="hotelMeta"></p>
+
+        <p id="hotelDescription">
+            Hotel description will appear here.
+        </p>
+
+        <button onclick="goToPackages()">Make Booking</button>
+
+    </div>
+    <!-- REVIEWS SECTION -->
+    <div class="reviews-section">
+
+    <h2>Guest Reviews</h2>
+
+    <div id="reviewsList">
+        <!-- Reviews will appear here -->
+    </div>
+
+    <h3>Add Your Review</h3>
+
+    <form class="review-form" onsubmit="addReview(event)">
+        <label>Your Name</label>
+        <input type="text" id="reviewerName" required>
+
+        <label>Rating</label>
+        <select id="reviewRating" required>
+            <option value="">Select</option>
+            <option value="5">★★★★★</option>
+            <option value="4">★★★★☆</option>
+            <option value="3">★★★☆☆</option>
+            <option value="2">★★☆☆☆</option>
+            <option value="1">★☆☆☆☆</option>
+        </select>
+
+        <label>Review</label>
+        <textarea id="reviewComment" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+</div>
+
+</section>
+
+<footer>
+    © 2026 BookNest. All rights reserved.
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
