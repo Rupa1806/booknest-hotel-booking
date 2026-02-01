@@ -1,12 +1,42 @@
 /* =========================
+   REGISTER PAGE LOGIC
+========================= */
+function registerUser(event) {
+    event.preventDefault();
+
+    const username = document.getElementById("regUsername").value.trim();
+    const password = document.getElementById("regPassword").value;
+    const confirm = document.getElementById("regConfirm").value;
+
+    if (password !== confirm) {
+        alert("Passwords do not match!");
+        return;
+    }
+
+    // Save user object to localStorage
+    const userData = { username, password };
+    localStorage.setItem("booknestUser", JSON.stringify(userData));
+
+    alert("Account created successfully! Please login.");
+    window.location.href = "index.html"; // Redirect to login
+}
+
+/* =========================
    LOGIN PAGE LOGIC
 ========================= */
 function login() {
-    const username = document.getElementById("username")?.value;
-    const password = document.getElementById("password")?.value;
+    const usernameInput = document.getElementById("username").value.trim();
+    const passwordInput = document.getElementById("password").value;
 
-    // Dummy credentials
-    if (username === "admin" && password === "1234") {
+    // Get the registered user from localStorage
+    const savedUser = localStorage.getItem("booknestUser");
+    const user = savedUser ? JSON.parse(savedUser) : null;
+
+    // Check against registered user OR default admin
+    if (user && usernameInput === user.username && passwordInput === user.password) {
+        window.location.href = "hotels.html";
+    } else if (usernameInput === "admin" && passwordInput === "1234") {
+        // Backup dummy credentials
         window.location.href = "hotels.html";
     } else {
         alert("Invalid username or password");
@@ -34,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
 // Store selected hotel
 function selectHotel(hotelName) {
     localStorage.setItem("selectedHotel", hotelName);
@@ -76,9 +107,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const metaEl = document.getElementById("hotelMeta");
         const descEl = document.getElementById("hotelDescription");
 
-        if (nameEl) nameEl.innerText = hotelName;
+        // For display spans/divs
+        if (nameEl && nameEl.tagName !== "INPUT") nameEl.innerText = hotelName;
         if (metaEl) metaEl.innerText = hotelData[hotelName].meta;
         if (descEl) descEl.innerText = hotelData[hotelName].desc;
+        
+        // For the Booking form input autofill
+        if (nameEl && nameEl.tagName === "INPUT") nameEl.value = hotelName;
     }
 });
 
@@ -86,6 +121,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function goToPackages() {
     window.location.href = "packages.html";
 }
+
 /* =========================
    HOTEL-WISE REVIEWS
 ========================= */
@@ -95,22 +131,18 @@ const hotelReviews = {
         { name: "Rahul Mehta", rating: 5, comment: "Breathtaking Taj view and royal service." },
         { name: "Ananya Singh", rating: 4, comment: "Luxury at its finest." }
     ],
-
     "The Oberoi Rajvilas": [
         { name: "Vikram Rao", rating: 5, comment: "Palace-like stay, very peaceful." },
         { name: "Neha Kapoor", rating: 4, comment: "Beautiful heritage resort." }
     ],
-
     "The Oberoi Vanyavilas Wildlife Resort": [
         { name: "Arjun Patel", rating: 5, comment: "Safari + luxury = unforgettable." },
         { name: "Sneha Iyer", rating: 4, comment: "Nature lovers paradise." }
     ],
-
     "Taj Lake Palace": [
         { name: "Rohit Malhotra", rating: 5, comment: "Romantic and magical experience." },
         { name: "Pooja Verma", rating: 4, comment: "Boat entry was amazing." }
     ],
-
     "The Leela Mumbai": [
         { name: "Karan Shah", rating: 4, comment: "Perfect city luxury hotel." },
         { name: "Meera Joshi", rating: 5, comment: "Excellent service and comfort." }
@@ -130,6 +162,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function renderReview(name, rating, comment) {
     const reviewsList = document.getElementById("reviewsList");
+    if(!reviewsList) return;
 
     const div = document.createElement("div");
     div.className = "review-card";
@@ -138,16 +171,15 @@ function renderReview(name, rating, comment) {
         <span>${"★".repeat(rating)}${"☆".repeat(5 - rating)}</span>
         <p>${comment}</p>
     `;
-
     reviewsList.appendChild(div);
 }
 
 function addReview(event) {
     event.preventDefault();
 
-    const name = reviewerName.value;
-    const rating = parseInt(reviewRating.value);
-    const comment = reviewComment.value;
+    const name = document.getElementById("reviewerName").value;
+    const rating = parseInt(document.getElementById("reviewRating").value);
+    const comment = document.getElementById("reviewComment").value;
 
     renderReview(name, rating, comment);
     event.target.reset();
@@ -173,7 +205,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const packageInput = document.getElementById("packageName");
     const amountInput = document.getElementById("totalAmount");
 
-    if (hotelInput) {
+    // Only fill if we are on the booking page (where these are inputs)
+    if (hotelInput && hotelInput.tagName === "INPUT") {
         hotelInput.value = localStorage.getItem("selectedHotel") || "N/A";
     }
 
@@ -190,12 +223,12 @@ document.addEventListener("DOMContentLoaded", () => {
 // Confirm booking
 function confirmBooking(event) {
     event.preventDefault();
-
     alert("🎉 Booking Confirmed!\nThank you for choosing BookNest.");
 
     // Clear package-related data
     localStorage.removeItem("selectedPackage");
     localStorage.removeItem("packagePrice");
+    window.location.href = "hotels.html"; // Optional redirect after booking
 }
 
 
