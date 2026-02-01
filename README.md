@@ -28,7 +28,7 @@ To view the website locally:
 
 Clone this repository:
 
-git clone https://github.com/Rupa1806/BookNest.git
+git clone https://https://github.com/Rupa1806/booknest-hotel-booking
 
 
 Open the folder in your code editor.
