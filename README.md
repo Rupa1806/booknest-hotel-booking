@@ -34,6 +34,8 @@ git clone https://github.com/Rupa1806/booknest-hotel-booking
 Open the folder in your code editor.
 
 Run the index.html file in any browser.
+Demo : username: admin
+       password:1234
 
 No backend or database is required — this is a frontend-only project.
 
