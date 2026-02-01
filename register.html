@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BookNest | Register</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>Create Account</h1>
+</header>
+
+<section class="booking-form">
+    <form onsubmit="registerUser(event)">
+
+        <label for="regUsername">Username</label>
+        <input type="text" id="regUsername" required>
+
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" required>
+
+        <label for="regConfirm">Confirm Password</label>
+        <input type="password" id="regConfirm" required>
+
+        <button type="submit">Register</button>
+
+        <p style="text-align:center; margin-top:15px;">
+            Already have an account?
+            <a href="index.html">Login here</a>
+        </p>
+
+    </form>
+</section>
+
+<footer>
+    © 2026 BookNest. All rights reserved.
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
