@@ -1,0 +1,293 @@
+/* =====================
+   GLOBAL STYLES
+===================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #fff8e7;
+    min-height: 100vh;
+}
+
+/* =====================
+   HEADER & FOOTER
+===================== */
+header {
+    background: #fff8e7;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    color: #6d071a;
+}
+
+footer {
+    background: #fff8e7;
+    text-align: center;
+    padding: 12px;
+    font-size: 14px;
+    margin-top: 40px;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+button {
+    padding: 10px 25px;
+    background-color: #6d071a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4b0512;
+}
+
+/* =====================
+   LOGIN PAGE
+===================== */
+.login-container {
+    background: #fafafa;
+    padding: 40px;
+    width: 350px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.login-container h1 {
+    color: #6d071a;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    color: #555;
+}
+
+.login-container input {
+    width: 90%;
+    padding: 10px;
+    margin: 12px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* =====================
+   HOTEL LISTING PAGE
+===================== */
+.hotel-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+.hotel-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* Slider */
+.slider {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slide {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: none;
+}
+
+.slide.active {
+    display: block;
+}
+
+.hotel-card h2 {
+    margin: 12px 0 5px;
+    color: #6d071a;
+}
+
+.hotel-meta {
+    font-size: 13px;
+    color: #777;
+}
+
+.hotel-desc {
+    font-size: 14px;
+    color: #555;
+    margin: 10px 0 15px;
+}
+
+/* =====================
+   HOTEL DETAILS PAGE
+===================== */
+.hotel-details {
+    max-width: 800px;
+    margin: 40px auto;
+    background: #fafafa;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.hotel-info p {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+/* =====================
+   PACKAGES PAGE
+===================== */
+.packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 30px;
+}
+
+.package-card {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.package-card h2 {
+    color: #6d071a;
+    margin-bottom: 5px;
+}
+
+.duration {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.package-card ul {
+    padding-left: 20px;
+    font-size: 14px;
+    color: #444;
+}
+
+.ideal {
+    font-weight: bold;
+    margin: 12px 0;
+}
+
+.price {
+    margin: 15px 0;
+}
+
+.mrp {
+    text-decoration: line-through;
+    color: gray;
+    margin-right: 10px;
+}
+
+.discount {
+    color: green;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* =====================
+   BOOKING FORM PAGE
+===================== */
+.booking-form {
+    max-width: 450px;
+    margin: 40px auto;
+    background: #fafafa;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+.booking-form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.booking-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.booking-form button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 12px;
+    font-size: 16px;
+}
+
+/* =====================
+   REVIEWS SECTION
+===================== */
+.reviews-section {
+    margin-top: 40px;
+}
+
+.review-card {
+    background: #fafafa;
+    border-left: 5px solid #6d071a;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+
+.review-card strong {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.review-form {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+.review-form input,
+.review-form select,
+.review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.review-form textarea {
+    height: 80px;
+}
+
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width: 600px) {
+    .login-container,
+    .booking-form,
+    .hotel-details {
+        width: 90%;
+    }
+}
