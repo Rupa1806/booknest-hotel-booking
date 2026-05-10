@@ -23,6 +23,7 @@ function registerUser(event) {
     // Direct redirect
     window.location.href = "./index.html";
 }
+
 /* =========================
    LOGIN PAGE LOGIC
 ========================= */
@@ -52,6 +53,7 @@ function login() {
         alert("Invalid username or password");
     }
 }
+
 
 /* =========================
    HOTEL LIST PAGE LOGIC
