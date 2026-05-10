@@ -13,35 +13,49 @@ function registerUser(event) {
         return;
     }
 
-    // Save user object to localStorage
-    const userData = { username, password };
+    const userData = {
+        username: username,
+        password: password
+    };
+
     localStorage.setItem("booknestUser", JSON.stringify(userData));
 
-    alert("Account created successfully! Please login.");
-    window.location.href = "index.html"; // Redirect to login
+    // Direct redirect
+    window.location.href = "./index.html";
 }
 
 /* =========================
    LOGIN PAGE LOGIC
 ========================= */
 function login() {
+
     const usernameInput = document.getElementById("username").value.trim();
     const passwordInput = document.getElementById("password").value;
 
-    // Get the registered user from localStorage
     const savedUser = localStorage.getItem("booknestUser");
-    const user = savedUser ? JSON.parse(savedUser) : null;
 
-    // Check against registered user OR default admin
-    if (user && usernameInput === user.username && passwordInput === user.password) {
-        window.location.href = "hotels.html";
-    } else if (usernameInput === "admin" && passwordInput === "1234") {
-        // Backup dummy credentials
-        window.location.href = "hotels.html";
+    if (!savedUser) {
+        alert("Please register first");
+        return;
+    }
+
+    const user = JSON.parse(savedUser);
+
+    if (
+        usernameInput === user.username &&
+        passwordInput === user.password
+    ) {
+
+        // Direct redirect
+        window.location.href = "./hotels.html";
+
     } else {
         alert("Invalid username or password");
     }
 }
+
+
+
 
 /* =========================
    HOTEL LIST PAGE LOGIC
